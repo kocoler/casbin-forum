@@ -12,19 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package object
+package controllers
 
-type LatestReply struct {
-	TopicId      string `json:"topicId"`
-	NodeId       string `json:"nodeId"`
-	NodeName     string `json:"nodeName"`
-	Author       string `json:"author"`
-	ReplyContent string `json:"replyContent"`
-	TopicTitle   string `json:"topicTitle"`
-	ReplyTime    string `json:"replyTime"`
+type userInfoFromGoogle struct {
+	Email string `json:"email"`
 }
 
-type NodeFavoritesRes struct {
-	NodeInfo *Node `json:"nodeInfo"`
-	TopicNum int   `json:"topicNum"`
+type authResponse struct {
+	IsAuthenticated bool `json:"isAuthenticated"`
+	IsSignedUp bool `json:"isSignedUp"`
+	Email string `json:"email"`
 }
+	
