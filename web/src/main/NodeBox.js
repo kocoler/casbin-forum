@@ -138,6 +138,7 @@ class NodeBox extends React.Component {
       from = 0
     }
     end = (page - 1) * limit + this.state.topics.length
+
     return (
       <div className="box">
         <div className="node_header">
@@ -179,7 +180,42 @@ class NodeBox extends React.Component {
   }
 
   render() {
-    return(
+    if (this.state.nodeInfo == null) {
+      return (
+        <div id="Main">
+          <div class="sep20"></div>
+          <div class="box">
+            <div class="header">
+              <a href="/">{Setting.getForumName()}</a>
+              <span className="chevron">&nbsp;›&nbsp;</span> Node not found</div>
+            <div class="cell">
+              The node you are trying to view does not exist, there are several possibilities:
+              <div class="sep10"></div>
+              <ul>
+                <li>You entered a node ID that does not exist.</li>
+                <li>The node is currently in invisible state.</li>
+              </ul>
+            </div>
+            <div class="inner">
+              {
+                this.props.account === null ?
+                  <span className="gray">
+                    <span className="chevron">‹</span> &nbsp;Back to <a href="/">Home Page</a>
+                  </span> :
+                  <span className="gray">
+                    <span className="chevron">‹</span> &nbsp;Back to <a href="/">Home Page</a>
+                    <br/>
+                    <span className="chevron">‹</span> &nbsp;Back to <a
+                    href={`/member/${this.props.account?.id}`}>My profile</a>
+                  </span>
+              }
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    return (
         <div id="Main">
           <div className="sep20" />
           {this.renderNode()}

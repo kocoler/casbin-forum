@@ -15,7 +15,7 @@
 package object
 
 import (
-	"strings"
+	"github.com/casbin/casbin-forum/util"
 	"sync"
 )
 
@@ -70,6 +70,18 @@ func GetReply(id string) *Reply {
 	}
 }
 
+func GetReplyId() int {
+	reply := new(Reply)
+	_, err := adapter.engine.Desc("created_time").Omit("content").Limit(1).Get(reply)
+	if err != nil {
+		panic(err)
+	}
+
+	res := util.ParseInt(reply.Id) + 1
+
+	return res
+}
+
 func UpdateReply(id string, reply *Reply) bool {
 	if GetReply(id) == nil {
 		return false
@@ -85,8 +97,6 @@ func UpdateReply(id string, reply *Reply) bool {
 }
 
 func AddReply(reply *Reply) bool {
-	reply.Content = strings.ReplaceAll(reply.Content, "\n", "<br/>")
-
 	affected, err := adapter.engine.Insert(reply)
 	if err != nil {
 		panic(err)
