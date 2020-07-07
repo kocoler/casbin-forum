@@ -30,7 +30,7 @@ class TopicBox extends React.Component {
     this.state = {
       classes: props,
       topicId: props.match.params.topicId,
-      topic: null,
+      topic: [],
       favoritesStatus: false,
     };
   }
@@ -105,6 +105,16 @@ class TopicBox extends React.Component {
   }
 
   render() {
+    if (this.state.topic !== null && this.state.topic.length === 0) {
+      return (
+        <div class="box">
+          <div class="header"><a href="/">{Setting.getForumName()}</a> <span class="chevron">&nbsp;›&nbsp;</span> Topic are loading</div>
+          <div class="cell"><span class="gray bigger">Please wait patiently.....</span></div>
+          <div class="inner">←  <a href="/">Back to Home Page</a></div>
+        </div>
+      )
+    }
+
     if (this.state.topic === null) {
       return (
         <div class="box">
