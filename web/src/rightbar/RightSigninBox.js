@@ -53,6 +53,12 @@ class RightSigninBox extends React.Component {
             <div className="sep5" />
             <div className="sep10" />
             {i18next.t("bar:For Existing Member")}{" "}&nbsp;<a href="/signin">{i18next.t("bar:Sign In")}</a>
+            <div className="sep10" />
+            <div>
+              <a onClick={() => Setting.getGithubAuthCode("signup")} href="javascript:void(0)" className="github-signin">
+                <img src={"https://testko.oss-cn-beijing.aliyuncs.com/qq.png"}/>
+              </a>
+            </div>
           </div>
         </div>
       </div>
