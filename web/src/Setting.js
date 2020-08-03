@@ -138,6 +138,10 @@ export function getGithubAuthCode(method) {
   window.location.href=`${Conf.GithubOauthUri}?client_id=${Conf.GithubClientId}&redirect_uri=${ClientUrl}/callback/github/${method}&scope=${Conf.GithubAuthScope}&response_type=code&state=${Conf.GithubAuthState}`
 }
 
+export function getQQAuthCode(method) {
+  window.location.href=`${Conf.QQOauthUri}?client_id=${Conf.QQClientId}&redirect_uri=forum.casbin.com&scope=${Conf.QQAuthScope}&response_type=code&state=${Conf.QQAuthState}`
+}
+
 export let OSSClient
 export let OSSUrl
 export let OSSFileUrl

@@ -28,6 +28,14 @@ export const GithubAuthScope  = "user:email+read:user"
 
 export const GithubOauthUri = "https://github.com/login/oauth/authorize"
 
+export const QQClientId  = ""
+
+export const QQAuthState  = ""
+
+export const QQAuthScope  = "get_user_info"
+
+export const QQOauthUri = "https://graph.qq.com/oauth2.0/authorize"
+
 export const OSSRegion = ""
 
 //The endpoint of your oss region, find it on https://help.aliyun.com/document_detail/31837.html
